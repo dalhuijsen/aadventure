@@ -1,0 +1,429 @@
+<html>
+<head><title>
+. o /
+ jl 
+</title>
+<style>
+plaintext { display: none; } 
+body { white-space: pre; 
+	font-family: monospace; 
+	font-style: italic; 
+	font-size:2em;
+	width: 90%;
+	margin: 0 auto;
+}
+</style><script>
+(function(){
+
+
+window.onload = function() { 
+  // settings
+  var metamarker = ' _'; 
+
+  // defaults
+  this.fh = 1; // frameheight
+  this.hh = 0; // headerheight
+  this.dh = 1; // dataheight
+  this.idx = 0; // startindex
+  this.fps = 3;
+
+
+  // globals
+  var self = this;
+  var reel = document.getElementsByClassName("reel")[0].innerText.split('\n');
+  var scenes = [];
+  var scene = '';
+  var stagenotes = [];
+  /* to override any of the defaults on runtime, use metamarker on 1st line *
+   * eg, override fps to 16 and frameheight to 4 with " _fps=16&fh=4"       */
+
+  if ( reel[0].substr(0,2) === ' _' ) { 
+    // meta header detected!
+    idx++;
+    var keyvals = reel[0].substr(2).split('&');
+    for (var i = 0, l=keyvals.length; i<l; i++) { 
+      var keyval = keyvals[i].split('=');
+      if ( typeof self[keyval[0]] !== 'undefined' ) { 
+        self[keyval[0]]=keyval[1];
+      }
+    }
+  }
+
+  //sanity
+  this.fh = parseInt(this.fh);
+  this.dh = parseInt(this.dh);
+  this.hh = parseInt(this.hh);
+  this.fps = parseInt(this.fps);
+  
+  if ( dh + hh > fh ) fh=dh+hh;
+  else if ( dh + hh < fh ) dh=fh-hh;
+
+  if ( parseInt(this.fps) < 1 ) this.fps=1;
+
+  //grab the scenes
+  for ( var i = idx, l = reel.length; i < l; i+=fh ) { 
+    if ( typeof reel[i+(fh-1)] === 'undefined' ) break;
+    scene = '';
+    for (var x = 0; x<fh; x++) {
+    	scene += reel[i+x]+'\n';
+    }
+    scenes[scenes.length] = scene;
+  }
+  var cntr = 0;
+  setInterval(function() { 
+        if ( cntr >= scenes.length ) cntr=0;
+	document.body.innerText= scenes[cntr++];
+  },(1000/this.fps));
+
+  
+}
+
+
+
+})(window)
+</script></head>
+<body>
+<plaintext class="reel"> _fh=1&hh=0&dh=4&fps=10
+   
+   . o /
+    jl 
+   
+12  
+   . o /
+    jl 
+   
+123  
+   . o /
+    jl 
+   
+1234  
+   . o /
+    jl 
+   
+12345  
+   . o /
+    jl 
+   
+123456  
+   . o /
+    jl 
+   
+1234567
+   . o /
+    jl 
+   
+12345678
+   . o /
+    jl 
+   
+123456789
+   . o /
+    jl 
+   
+123456789A
+   . o /
+    jl 
+   
+123456789AB
+   . o /
+    jl 
+
+123456789ABC
+   . o /
+    jl 
+   
+123456789ABCD
+   . o /
+    jl 
+   
+123456789ABCDE
+   . o /
+    jl 
+   
+123456789ABCDEF
+   . o /
+    jl 
+   
+123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF01
+   . o /
+    jl 
+   
+123456789ABCDEF012
+   . o /
+    jl 
+   
+123456789ABCDEF0123
+   . o /
+    jl 
+   
+123456789ABCDEF01234
+   . o /
+    jl 
+   
+123456789ABCDEF012345
+   . o /
+    jl 
+   
+123456789ABCDEF0123456
+   . o /
+    jl 
+   
+123456789ABCDEF01234567
+   . o /
+    jl 
+   
+123456789ABCDEF012345678
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789A
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789AB
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABC
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCD
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDE
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF01
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF012
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0
+   . o /
+    jl 
+   
+
+     _o4 
+     JL      
+
+   
+    .)o 
+     jL`
+
+ 
+   . o / 
+     JL
+
+   
+   . o /
+    jl 
+   
+   
+    ,o/
+    jL
+   
+   
+    ,o/
+    jL
+
+   
+    ,o_
+    jL
+
+   
+    ,o_
+    JL
+
+   
+    .o
+    Jl`
+
+   
+    ,o_
+    ||
+
+   
+    ,o_
+    j\
+
+   
+    \o/
+    /\
+
+         
+   _o_
+   < >
+
+
+   ,o
+   <`>
+
+
+  ,o.
+  <\ 
+`
+    
+  ,o.             _,o__.   ,
+  <\             L_`iZ`|   L)
+   
+
+  ,o.   _.
+  <\   /k"        
+
+
+  ,o. _.
+  <\ /k"        
+
+
+  ,o_.
+  </k"        
