@@ -14,11 +14,15 @@ body { white-space: pre;
 
 
 window.onload = function() { 
+  // settings
+  var metamarker = ' _'; 
+
   // defaults
   this.fh = 1; // frameheight
   this.hh = 0; // headerheight
   this.dh = 1; // dataheight
   this.idx = 0; // startindex
+
 
   // globals
   var self = this;
@@ -26,7 +30,12 @@ window.onload = function() {
   var scenes = [];
   var scene = '';
   
+  /* to override any of the defaults on runtime, use metamarker above; *
+   * eg, override fps to 16 and frameheight to 4 with " _fps=16&fh=4"  */
+
   if ( reel[0].substr(0,2) === ' _' ) { 
+    // meta header detected!
+    idx++;
     var keyvals = reel[0].substr(2).split('&');
     for (var i = 0, l=keyvals.length; i<l; i++) { 
       var keyval = keyvals[i].split('=');
