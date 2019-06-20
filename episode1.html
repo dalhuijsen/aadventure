@@ -1,5 +1,9 @@
 <html>
-<head><style>
+<head><title>
+. o /
+ jl 
+</title>
+<style>
 plaintext { display: none; } 
 body { white-space: pre; 
 	font-family: monospace; 
@@ -10,13 +14,21 @@ body { white-space: pre;
 
 
 window.onload = function() { 
+  // defaults
+  var fh = 1; // frameheight
+  var hh = 0; // headerheight
+  var dh = 1; // dataheight
+  var idx = 0; // startindex
+
+  // globals
   var reel = document.getElementsByClassName("reel")[0].innerText.split('\n');
   var scenes = [];
   var scene = '';
-  var frameheight = 1;
-  var headerheight = 0;
-  var bodyheight = 1;
-  for ( var i = 0, l = reel.length; i < l; i+=frameheight ) { 
+  debugger;
+  if ( reel[0].substr(0,2) === ' _' ) { 
+    var opt = reel[0].substr(2).split(&&);
+  }
+  for ( var i = idx, l = reel.length; i < l; i+=fh ) { 
     if ( typeof reel[i+3] === 'undefined' ) break;
     scene = '';
     scene += reel[i]+'\n';
@@ -29,7 +41,7 @@ window.onload = function() {
   setInterval(function() { 
         if ( cntr >= scenes.length ) cntr=0;
 	document.body.innerText= scenes[cntr++];
-  },100);
+  },1000);
 
   
 }
@@ -39,8 +51,7 @@ window.onload = function() {
 })(window)
 </script></head>
 <body>
-<plaintext class="reel">
-f4h0d4
+<plaintext class="reel"> _fh=4&hh=0&dh=4
    
    . o /
     jl 
