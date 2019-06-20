@@ -1,0 +1,8 @@
+plaintext { display: none; } 
+body { white-space: pre; 
+	font-family: monospace; 
+	font-style: italic; 
+	font-size:2em;
+	width: 90%;
+	margin: 0 auto;
+}
