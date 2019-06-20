@@ -1,9 +1,28 @@
 <html>
-<head><script>
+<head><style>plaintext { display: none; } body { white-space: pre; font-family: monospace; font-style: italic; font-size:2em;}</style><script>
 (function(){
 
 
 window.onload = function() { 
+  var reel = document.getElementsByClassName("reel")[0].innerText.split('\n');
+  var scenes = [];
+  var scene = '';
+  for ( var i = 0, l = reel.length; i < l; i+=4 ) { 
+    if ( typeof reel[i+3] === 'undefined' ) break;
+    scene = '';
+    scene += reel[i]+'\n';
+    scene += reel[i+1]+'\n';
+    scene += reel[i+2]+'\n';
+    scene += reel[i+3]+'\n';
+    scenes[scenes.length] = scene;
+  }
+  var cntr = 0;
+  setInterval(function() { 
+        if ( cntr >= scenes.length ) cntr=0;
+	document.body.innerText= scenes[cntr++];
+  },100);
+
+  
 }
 
 
@@ -11,7 +30,7 @@ window.onload = function() {
 })(window)
 </script></head>
 <body>
-<plaintext>
+<plaintext class="reel">
 
 . o /
  jl
