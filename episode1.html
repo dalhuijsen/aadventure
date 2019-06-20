@@ -15,19 +15,27 @@ body { white-space: pre;
 
 window.onload = function() { 
   // defaults
-  var fh = 1; // frameheight
-  var hh = 0; // headerheight
-  var dh = 1; // dataheight
-  var idx = 0; // startindex
+  this.fh = 1; // frameheight
+  this.hh = 0; // headerheight
+  this.dh = 1; // dataheight
+  this.idx = 0; // startindex
 
   // globals
+  var self = this;
   var reel = document.getElementsByClassName("reel")[0].innerText.split('\n');
   var scenes = [];
   var scene = '';
-  debugger;
+  
   if ( reel[0].substr(0,2) === ' _' ) { 
-    var opt = reel[0].substr(2).split(&&);
+    var keyvals = reel[0].substr(2).split('&');
+    for (var i = 0, l=keyvals.length; i<l; i++) { 
+      var keyval = keyvals[i].split('=');
+      if ( typeof self[keyval[0]] !== 'undefined' ) { 
+        self[keyval[0]]=keyval[1];
+      }
+    }
   }
+
   for ( var i = idx, l = reel.length; i < l; i+=fh ) { 
     if ( typeof reel[i+3] === 'undefined' ) break;
     scene = '';
