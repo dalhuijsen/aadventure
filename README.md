@@ -1,0 +1,4 @@
+# aadventure - sentient text
+
+  . o /
+ 
