@@ -1,5 +1,11 @@
 <html>
-<head><style>plaintext { display: none; } body { white-space: pre; font-family: monospace; font-style: italic; font-size:2em;}</style><script>
+<head><style>
+plaintext { display: none; } 
+body { white-space: pre; 
+	font-family: monospace; 
+	font-style: italic; 
+	font-size:2em;}
+</style><script>
 (function(){
 
 
@@ -7,7 +13,10 @@ window.onload = function() {
   var reel = document.getElementsByClassName("reel")[0].innerText.split('\n');
   var scenes = [];
   var scene = '';
-  for ( var i = 0, l = reel.length; i < l; i+=4 ) { 
+  var frameheight = 1;
+  var headerheight = 0;
+  var bodyheight = 1;
+  for ( var i = 0, l = reel.length; i < l; i+=frameheight ) { 
     if ( typeof reel[i+3] === 'undefined' ) break;
     scene = '';
     scene += reel[i]+'\n';
