@@ -25,7 +25,7 @@
 
 window.onload = function() { 
   // settings
-  var metamarker = ' _'; 
+  this.loop = false;
 
   // defaults
   this.fh = 1; // frameheight
@@ -34,6 +34,8 @@ window.onload = function() {
   this.idx = 0; // startindex
   this.fps = 3;
 
+  // internal settings - don't touch these
+  var metamarker = ' _'; 
 
   // globals
   var self = this;
@@ -77,8 +79,11 @@ window.onload = function() {
     scenes[scenes.length] = scene;
   }
   var cntr = 0;
-  setInterval(function() { 
-        if ( cntr >= scenes.length ) cntr=0;
+  var myinterval = setInterval(function() { 
+        if ( cntr >= scenes.length ) {
+		if ( this.loop) cntr=0;
+		else return clearInterval(myinterval);
+	}
 	document.body.innerText= scenes[cntr++];
   },(1000/this.fps));
 
