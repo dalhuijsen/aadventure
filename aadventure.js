@@ -1,4 +1,26 @@
 (function(){
+	/*
+	 * ooh cool, dem random chars look like they are looking at me   . o /
+	 *                                                                jl  
+	 *                                                          i wonder...
+	 *                                            ...should i animate them?
+	 * let's build a quick text looper thingy.... 
+	 *
+	 */
+
+	/*
+	 * alright..   _o,
+	 *             |L   ..so i can animate now, but having the fps harcoded
+	 *                  is so yucky, let's code that in real quick..
+	 */
+
+	/*       ..woohoo! time to start drawing!!
+	 * `o `                 ..however, what if i ever want to pause a frame?
+	 *  |\                      Maybe best to code in a frame header too.
+	 */
+
+
+
 
 
 window.onload = function() { 
